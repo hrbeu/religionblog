@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Theology Articles</title>
+</head>
+<br>
+    <h1>Theology articles</h1>
+    {% for article in articles %}
+        {% if forloop.counter|divisibleby:2 %}
+            <li style="color:black">
+                {{forloop.counter}}
+                <style type="text/css">
+                    a:link,a:visited{
+                        text-decoration:none;  /*超链接无下划线*/
+                    }
+                    a:hover{
+                        text-decoration:underline;  /*鼠标放上去有下划线*/
+                    }
+                </style>
+                <a href=" {% url 'theology:article_page' %}?article_id={{article.id}}"> {{ article.title }} </a>
+            </li>
+        {% else %}
+            <li style="color:blue">
+                {{forloop.counter}}
+                <style type="text/css">
+                    a:link,a:visited{
+                        text-decoration:none;  /*超链接无下划线*/
+                    }
+                    a:hover{
+                        text-decoration:underline;  /*鼠标放上去有下划线*/
+                    }
+                </style>
+                <a href=" {% url 'theology:article_page' %}?article_id={{article.id}}"> {{ article.title }} </a>
+            </li>
+        {% endif %}
+        <br/>
+    {% empty %}
+        <li>目前没有文章</li>
+    {% endfor %}
+
+    </br>
+    </br>
+    <a href=" {% url 'theology:article_edit_page' 0%} ">写博客</a>
+    </br>
+    <br/>
+    {{ nowtime|date:'Y-m-d H:i' }}
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Verifycodefile</title>
+</head>
+<body>
+    <form method="post" action="{% url 'theology:verifycodecheck' %}">
+        {%csrf_token%}
+        <input type="text" name="verifycode"/>
+        <img src="{% url 'theology:verifycode' %}">
+        <input type="submit" name="Submit">
+        <span>{{tips}}</span>
+    </form>
+</body>
+</html>
