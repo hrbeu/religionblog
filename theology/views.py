@@ -96,7 +96,8 @@ def article_edit_page_action(request):
     ##新增是返回首页，编辑是返回详情页
     if str(article_id) == '0':
                 article = models.Theologyarticles.articleObj.createTheologyariticle(title=title, content=content)
-                return HttpResponseRedirect("http://127.0.0.1:8000/theology/index/")
+                #return HttpResponseRedirect("http://127.0.0.1:8000/theology/index/")
+                return HttpResponseRedirect("/theology/index/")
 
     article = models.Theologyarticles.articleObj.updateTheologyarticle(article_id=article_id,title=title,content=content)
     return render(request, 'article_page.html', {'article': article})
